@@ -136,8 +136,8 @@ img {
     left: 0;
     width: 100%;
     z-index: 1000;
-    padding: 2rem 0;
-    /* Aumentado de 1rem para dar mais espaço */
+    padding: 1.5rem 0;
+    /* Padding ajustado para não ficar muito descido */
     backdrop-filter: blur(20px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     background: rgba(10, 10, 10, 0.8);
@@ -717,75 +717,20 @@ img {
         /* Buttons clickable */
     }
 
-    /* 3. Hide duplicate header logo */
-    .site-header #header .logo,
+    /* Desktop: Garantir que a logo do header apareça */
     .site-header .logo {
-        display: none !important;
+        display: block !important;
+        visibility: visible !important;
     }
 
-    /* 4. Desktop Floating Logo - Adjusted Position & Parallax Prep */
-    .desktop-floating-logo {
-        display: block;
-        position: fixed;
-        top: -40px;
-        /* "Subir cerca de 70px" (assuming it was low, or pulling it up to bleed edges) */
-        left: 130px;
-        /* "100px para direita" (30px original + 100px) */
-        z-index: 2000;
-        width: 180px;
-        /* Slightly larger */
-        transition: transform 0.1s ease-out;
-        /* Immediate response for parallax */
-        will-change: transform;
-    }
-
-    .desktop-floating-logo img {
-        filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.5));
-    }
-
-    /* 5. Transparent Sticky Menu */
-    .site-header {
-        position: fixed;
-        width: 100%;
-        top: 0;
-        background: transparent !important;
-        /* Force Transparent */
-        backdrop-filter: none !important;
-        /* Clean glass removed for pure transparency if requested, or kept subtle */
-        border: none !important;
-        padding-top: 50px;
-        /* Descido 30px conforme solicitado */
-    }
-
+    /* 5. Desktop Header Layout */
     .header-container {
-        justify-content: center;
-    }
-
-    /* Capsule Menu - Stays */
-    .nav-menu {
-        background: rgba(10, 10, 10, 0.4);
-        /* Darker, more subtle transparent */
-        backdrop-filter: blur(15px);
-        /* Blur stays for readability */
-        border: 1px solid rgba(255, 255, 255, 0.05);
-    }
-
-    /* 6. Re-balance Header Layout */
-    .header-container {
-        justify-content: center;
-        /* Center the menu since logo is gone */
+        justify-content: space-between;
+        /* Logo à esquerda, menu ao centro, botão à direita */
         position: relative;
     }
 
-    /* Position the CTA button absolutely to the right so it doesn't mess up centering */
-    .header-actions {
-        position: absolute;
-        right: 20px;
-        top: 50%;
-        transform: translateY(-50%);
-    }
-
-    /* 7. Enhanced Desktop Menu (Capsule Style) */
+    /* Enhanced Desktop Menu (Capsule Style) */
     .nav-menu {
         display: flex;
         gap: 30px;

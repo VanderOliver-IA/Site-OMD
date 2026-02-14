@@ -7,7 +7,6 @@
         <h1 class="hero-title">
             <span class="text-gradient">Clareza</span> e <br>
             Resultados Reais.
-            <small style="display: block; font-size: 0.5rem; color: var(--primary-cyan); margin-top: 1rem;">teste de deploy</small>
         </h1>
         <p class="hero-text">
             Pare de improvisar. Transformamos confusão digital em estratégia de crescimento com Inteligência Artificial e Marketing de verdade.
