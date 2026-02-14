@@ -34,11 +34,6 @@
     </div>
 </footer>
 
-<!-- Desktop Floating Logo -->
-<div class="desktop-floating-logo" title="Arrastar (Simulado)">
-    <img src="assets/img/logo-omd.png" alt="OMD Logo">
-    <div class="close-btn" title="Fechar">x</div>
-</div>
 
 <!-- Floating Mobile Actions (Above Bottom Nav) -->
 <div class="floating-actions-bar">

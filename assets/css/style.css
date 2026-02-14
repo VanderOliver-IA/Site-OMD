@@ -136,7 +136,8 @@ img {
     left: 0;
     width: 100%;
     z-index: 1000;
-    padding: var(--spacing-sm) 0;
+    padding: 2rem 0;
+    /* Aumentado de 1rem para dar mais espaço */
     backdrop-filter: blur(20px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     background: rgba(10, 10, 10, 0.8);
@@ -427,14 +428,7 @@ img {
 }
 
 @media (min-width: 769px) {
-    .desktop-floating-logo {
-        display: block;
-    }
-
-    /* Hide standard logo in header if we use floating one */
-    .site-header .logo {
-        visibility: hidden;
-    }
+    /* Desktop: logo flutuante removida, usar logo do header normalmente */
 }
 
 /* 5. Dynamic Desktop Menu */
@@ -759,7 +753,8 @@ img {
         backdrop-filter: none !important;
         /* Clean glass removed for pure transparency if requested, or kept subtle */
         border: none !important;
-        padding-top: 50px; /* Descido 30px conforme solicitado */
+        padding-top: 50px;
+        /* Descido 30px conforme solicitado */
     }
 
     .header-container {

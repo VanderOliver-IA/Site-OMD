@@ -15,7 +15,7 @@
 <body>
 
     <!-- Main Header -->
-    <header id="header">
+    <header id="header" class="site-header">
         <div class="container header-container">
         <a href="index.php" class="logo">
             <img src="assets/img/logo-omd.png" alt="OMD Logo" style="max-height: 40px; vertical-align: middle;">
