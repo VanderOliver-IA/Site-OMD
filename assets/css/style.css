@@ -759,7 +759,7 @@ img {
         backdrop-filter: none !important;
         /* Clean glass removed for pure transparency if requested, or kept subtle */
         border: none !important;
-        padding-top: 20px;
+        padding-top: 50px; /* Descido 30px conforme solicitado */
     }
 
     .header-container {

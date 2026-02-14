@@ -14,11 +14,6 @@
 </head>
 <body>
 
-    <!-- Mobile Hero Logo (Parallax Element) -->
-    <div class="mobile-hero-logo" id="mobileHeroLogo">
-        <img src="assets/img/logo-omd.png" alt="OMD Logo">
-    </div>
-
     <!-- Main Header -->
     <header id="header">
         <div class="container header-container">
