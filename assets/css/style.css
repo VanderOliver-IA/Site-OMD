@@ -469,19 +469,17 @@ img {
 
 /* 1. Mobile Hero Logo (Parallax Element) */
 .mobile-hero-logo {
+    display: block;
+    /* Visible on Mobile */
     position: fixed;
-    /* Fixed from start to avoid jumpiness */
-    top: 5%;
-    /* Initial Top Position */
+    top: 50px;
+    /* Ajuste: Subir para não cobrir texto (antes era 5% ou mais baixo) */
     left: 50%;
-    /* Initial Center */
     transform: translateX(-50%);
     width: 140px;
-    /* Initial Size */
     z-index: 9999;
     pointer-events: none;
     transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-    /* Ultra Smooth Ease-Out */
 }
 
 .mobile-hero-logo img {
@@ -494,15 +492,27 @@ img {
 .mobile-hero-logo.mobile-scrolled {
     top: auto !important;
     bottom: 85px !important;
-    /* Match Floating Bar Height */
     left: 20px !important;
-    /* Match Floating Bar Padding */
     transform: translateX(0) scale(1) !important;
-    /* Reset centering, natural scale */
     width: 50px !important;
-    /* Shrink to Icon Size */
     filter: drop-shadow(0 0 0 rgba(0, 0, 0, 0));
-    /* Ensure no shadow */
+}
+
+/* DESKTOP LOGO STYLES */
+.desktop-logo {
+    display: none;
+    /* Hidden on Mobile by default */
+}
+
+.desktop-logo img {
+    max-height: 80px;
+    /* Aumentado para Desktop */
+    width: auto;
+    transition: transform 0.3s ease;
+}
+
+.desktop-logo:hover img {
+    transform: scale(1.05);
 }
 
 /* 2. Floating Actions Bar (Clean & Shadowless) */
@@ -514,12 +524,10 @@ img {
     padding: 0 20px;
     display: flex;
     justify-content: space-between;
-    /* Space out: Logo Left, WhatsApp Right */
     align-items: flex-end;
     z-index: 1000;
     pointer-events: none;
     opacity: 0;
-    /* Hidden initially, shown via JS class */
     transition: opacity 0.4s ease;
 }
 
@@ -717,10 +725,9 @@ img {
         /* Buttons clickable */
     }
 
-    /* Desktop: Garantir que a logo do header apareça */
-    .site-header .logo {
+    /* Desktop: Exibir logo exclusiva de desktop */
+    .desktop-logo {
         display: block !important;
-        visibility: visible !important;
     }
 
     /* 5. Desktop Header Layout */
