@@ -1,0 +1,5 @@
+Informações Novo Site OMD - Antigravity
+Banco Dados - SUPABSE - site-omd-2026
+Senha:Omd#2026NewSite
+URL do projeto= https://lriapvoderqzvecjezpe.supabase.co
+Chave de API publicável = sb_publishable_0LC5NFaOnDhc7oySD11G1w_7HPBP2td

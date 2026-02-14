@@ -1,0 +1,865 @@
+/* OMD 2026 - Design System */
+
+:root {
+    /* Colors */
+    --bg-dark: #0a0a0a;
+    --bg-card: rgba(255, 255, 255, 0.05);
+    --primary-cyan: #00f3ff;
+    --primary-magenta: #ff00ff;
+    --text-primary: #ffffff;
+    --text-secondary: #a0a0a0;
+    --accent-gradient: linear-gradient(135deg, var(--primary-cyan), var(--primary-magenta));
+
+    /* Typography */
+    --font-heading: 'Outfit', sans-serif;
+    --font-body: 'Inter', sans-serif;
+
+    /* Spacing */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 2rem;
+    --spacing-lg: 4rem;
+    --spacing-xl: 8rem;
+
+    /* Effects */
+    --glass-blur: blur(10px);
+    --border-radius: 12px;
+    --transition-fast: 0.2s ease;
+    --transition-medium: 0.4s ease;
+    --glow-cyan: 0 0 20px rgba(0, 243, 255, 0.3);
+    --glow-magenta: 0 0 20px rgba(255, 0, 255, 0.3);
+}
+
+/* Reset & Base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-dark);
+    background-image: linear-gradient(rgba(10, 10, 10, 0.9), rgba(10, 10, 10, 0.9)), url('../img/fundo-linhas-omd.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: var(--spacing-sm);
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: var(--transition-fast);
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+/* Utilities */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-md);
+}
+
+.text-gradient {
+    background: var(--accent-gradient);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+}
+
+.btn {
+    display: inline-block;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: var(--glass-blur);
+    transition: var(--transition-medium);
+}
+
+.btn-primary {
+    background: transparent;
+    border: 1px solid var(--primary-cyan);
+    color: var(--primary-cyan);
+    box-shadow: var(--glow-cyan);
+}
+
+.btn-primary:hover {
+    background: var(--primary-cyan);
+    color: var(--bg-dark);
+    box-shadow: 0 0 40px rgba(0, 243, 255, 0.6);
+}
+
+.btn-secondary {
+    border-color: var(--primary-magenta);
+    color: var(--primary-magenta);
+}
+
+.btn-secondary:hover {
+    background: var(--primary-magenta);
+    color: var(--bg-dark);
+    box-shadow: 0 0 40px rgba(255, 0, 255, 0.6);
+}
+
+/* Header */
+.site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: var(--spacing-sm) 0;
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    background: rgba(10, 10, 10, 0.8);
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: -1px;
+}
+
+.nav-menu {
+    display: flex;
+    gap: var(--spacing-md);
+}
+
+.nav-link {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    opacity: 0.8;
+}
+
+.nav-link:hover {
+    opacity: 1;
+    color: var(--primary-cyan);
+}
+
+/* Hero Section */
+.hero {
+    padding: var(--spacing-xl) 0 var(--spacing-lg);
+    position: relative;
+    overflow: hidden;
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: -20%;
+    right: -10%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, var(--primary-cyan) 0%, transparent 70%);
+    opacity: 0.15;
+    filter: blur(80px);
+    z-index: -1;
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    bottom: -10%;
+    left: -10%;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, var(--primary-magenta) 0%, transparent 70%);
+    opacity: 0.15;
+    filter: blur(80px);
+    z-index: -1;
+}
+
+.hero-content {
+    max-width: 800px;
+}
+
+.hero-subtitle {
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--primary-cyan);
+    margin-bottom: var(--spacing-sm);
+    display: block;
+}
+
+.hero-title {
+    font-size: 4rem;
+    margin-bottom: var(--spacing-md);
+    line-height: 1.1;
+}
+
+.hero-text {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-md);
+    max-width: 600px;
+}
+
+.hero-actions {
+    display: flex;
+    gap: var(--spacing-sm);
+}
+
+/* Features/Problem Section */
+.section {
+    padding: var(--spacing-xl) 0;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
+}
+
+.benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-md);
+}
+
+.benefit-card {
+    background: var(--bg-card);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: var(--spacing-md);
+    border-radius: var(--border-radius);
+    transition: var(--transition-medium);
+}
+
+.benefit-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary-cyan);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.benefit-icon {
+    font-size: 2rem;
+    margin-bottom: var(--spacing-sm);
+    color: var(--primary-cyan);
+}
+
+/* Services Section */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-md);
+}
+
+.service-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: var(--spacing-md);
+    border-radius: var(--border-radius);
+    position: relative;
+    overflow: hidden;
+    transition: var(--transition-medium);
+}
+
+.service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: var(--accent-gradient);
+    opacity: 0;
+    transition: var(--transition-fast);
+}
+
+.service-card:hover::before {
+    opacity: 1;
+}
+
+.service-card:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* Footer */
+.site-footer {
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding: var(--spacing-lg) 0 var(--spacing-md);
+    background: #050505;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-lg);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: var(--spacing-md);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+/* Responsive */
+/* --- Mobile & Floating UI Improvements --- */
+
+/* --- Final UI Polish --- */
+
+/* 1. Mobile Cleanup */
+@media (max-width: 768px) {
+
+    /* Kill Top Header Completely on Mobile */
+    .site-header {
+        display: none !important;
+    }
+
+    /* Ensure Hero Content isn't cut off */
+    .hero {
+        padding-top: 100px;
+        /* Give space for the floating logo */
+    }
+}
+
+/* 2. Scroll Progress Ring Adjustment */
+.progress-ring__circle {
+    transition: stroke-dashoffset 0.1s linear;
+    /* Linear for smoothness */
+    stroke-linecap: round;
+    /* Nicer ends */
+    transform: rotate(-90deg);
+    /* Start from top */
+    transform-origin: 50% 50%;
+}
+
+/* 3. Mobile Nav "Neon Pulse" (Constant Attention) */
+@keyframes neon-pulse {
+    0% {
+        filter: drop-shadow(0 0 2px currentColor);
+    }
+
+    50% {
+        filter: drop-shadow(0 0 8px currentColor);
+        transform: scale(1.1);
+    }
+
+    100% {
+        filter: drop-shadow(0 0 2px currentColor);
+    }
+}
+
+.mobile-nav-item.active .material-icons {
+    animation: neon-pulse 2s infinite ease-in-out;
+    /* Constant pulse */
+}
+
+/* 4. Desktop Floating Logo (Draggable-style) */
+.desktop-floating-logo {
+    display: none;
+    /* Hidden on mobile */
+    position: fixed;
+    top: 30px;
+    left: 30px;
+    z-index: 2000;
+    width: 150px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.5));
+}
+
+.desktop-floating-logo:hover {
+    transform: scale(1.05) rotate(-2deg);
+}
+
+.desktop-floating-logo .close-btn {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background: #ff00ff;
+    color: white;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.desktop-floating-logo:hover .close-btn {
+    opacity: 1;
+}
+
+@media (min-width: 769px) {
+    .desktop-floating-logo {
+        display: block;
+    }
+
+    /* Hide standard logo in header if we use floating one */
+    .site-header .logo {
+        visibility: hidden;
+    }
+}
+
+/* 5. Dynamic Desktop Menu */
+.nav-link {
+    position: relative;
+    font-weight: 600;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--primary-cyan);
+    transition: width 0.3s ease;
+    box-shadow: 0 0 10px var(--primary-cyan);
+}
+
+.nav-link:hover {
+    color: var(--primary-cyan);
+    transform: translateY(-2px);
+    text-shadow: 0 0 15px rgba(0, 243, 255, 0.5);
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.btn-primary:hover,
+.btn-secondary:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px currentColor;
+    /* Enhanced glow */
+}
+
+/* 1. Mobile Hero Logo (Parallax Element) */
+.mobile-hero-logo {
+    position: fixed;
+    /* Fixed from start to avoid jumpiness */
+    top: 5%;
+    /* Initial Top Position */
+    left: 50%;
+    /* Initial Center */
+    transform: translateX(-50%);
+    width: 140px;
+    /* Initial Size */
+    z-index: 9999;
+    pointer-events: none;
+    transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    /* Ultra Smooth Ease-Out */
+}
+
+.mobile-hero-logo img {
+    width: 100%;
+    filter: none;
+    transition: all 0.6s ease;
+}
+
+/* Scrolled State (Layout Replication Skill) */
+.mobile-hero-logo.mobile-scrolled {
+    top: auto !important;
+    bottom: 85px !important;
+    /* Match Floating Bar Height */
+    left: 20px !important;
+    /* Match Floating Bar Padding */
+    transform: translateX(0) scale(1) !important;
+    /* Reset centering, natural scale */
+    width: 50px !important;
+    /* Shrink to Icon Size */
+    filter: drop-shadow(0 0 0 rgba(0, 0, 0, 0));
+    /* Ensure no shadow */
+}
+
+/* 2. Floating Actions Bar (Clean & Shadowless) */
+.floating-actions-bar {
+    position: fixed;
+    bottom: 85px;
+    left: 0;
+    width: 100%;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    /* Space out: Logo Left, WhatsApp Right */
+    align-items: flex-end;
+    z-index: 1000;
+    pointer-events: none;
+    opacity: 0;
+    /* Hidden initially, shown via JS class */
+    transition: opacity 0.4s ease;
+}
+
+.floating-actions-bar.visible {
+    opacity: 1;
+}
+
+.floating-btn {
+    pointer-events: auto;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    box-shadow: none !important;
+    /* No Shadow */
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.floating-btn:active {
+    transform: scale(0.9);
+}
+
+/* Left Placeholder for Logo Destination (Handled by JS moving the Hero Logo) */
+.fab-placeholder {
+    width: 50px;
+    height: 50px;
+    visibility: hidden;
+    /* Just for spacing if needed */
+}
+
+/* Center: Scroll Top (Minimalist Ring) */
+.fab-scroll-top {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0;
+    width: 55px;
+    height: 55px;
+    background: rgba(0, 0, 0, 0.8);
+    /* Dark backing for legibility */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    cursor: pointer;
+    backdrop-filter: blur(5px);
+}
+
+.progress-ring {
+    transform: rotate(-90deg);
+}
+
+.progress-ring__circle {
+    transition: stroke-dashoffset 0.1s;
+}
+
+/* Right: WhatsApp (Gradient, No Shadow) */
+.fab-whatsapp {
+    background: linear-gradient(135deg, #ff00ff, #00f3ff);
+    color: white;
+}
+
+.fab-whatsapp .material-icons {
+    font-size: 1.8rem;
+}
+
+
+/* 3. Mobile Bottom Nav "UAU" Factor */
+.mobile-bottom-nav {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 75px;
+    /* Slightly taller for animations */
+    background: rgba(5, 5, 5, 0.95);
+    /* Deep dark */
+    backdrop-filter: blur(20px);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    /* Subtle border */
+    z-index: 1000;
+    justify-content: space-around;
+    align-items: center;
+    padding-bottom: env(safe-area-inset-bottom);
+}
+
+.mobile-nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-secondary);
+    font-size: 0.7rem;
+    gap: 6px;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.mobile-nav-item .material-icons {
+    font-size: 1.3rem;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Dynamic Colors per Item */
+.mobile-nav-item:nth-child(1).active,
+.mobile-nav-item:nth-child(1):hover {
+    color: #00f3ff;
+}
+
+/* Home Cyan */
+.mobile-nav-item:nth-child(2).active,
+.mobile-nav-item:nth-child(2):hover {
+    color: #ff00ff;
+}
+
+/* Services Magenta */
+.mobile-nav-item:nth-child(3).active,
+.mobile-nav-item:nth-child(3):hover {
+    color: #ffd700;
+}
+
+/* Hub Gold */
+.mobile-nav-item:nth-child(4).active,
+.mobile-nav-item:nth-child(4):hover {
+    color: #00ff88;
+}
+
+/* Blog Green */
+.mobile-nav-item:nth-child(5).active,
+.mobile-nav-item:nth-child(5):hover {
+    color: #ff6b00;
+}
+
+/* Quem Orange */
+
+/* Active State Animation */
+.mobile-nav-item.active .material-icons {
+    transform: translateY(-5px) scale(1.4);
+    filter: drop-shadow(0 0 8px currentColor);
+    /* Glow in the specific color */
+}
+
+.mobile-nav-item.active::after {
+    content: '';
+    position: absolute;
+    bottom: 5px;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: currentColor;
+    box-shadow: 0 0 10px currentColor;
+}
+
+/* DESKTOP HIDES & ENHANCEMENTS */
+@media (min-width: 769px) {
+
+    /* 1. Mobile Specifics Hide */
+    .mobile-hero-logo,
+    .mobile-bottom-nav {
+        display: none !important;
+    }
+
+    /* 2. Floating Actions Bar - NOW VISIBLE ON DESKTOP */
+    .floating-actions-bar {
+        display: flex !important;
+        /* Enable for Desktop */
+        justify-content: flex-end;
+        /* Align buttons to right */
+        gap: 15px;
+        bottom: 30px;
+        right: 30px;
+        left: auto;
+        /* Release left */
+        width: auto;
+        /* Shrink to content */
+        padding: 0;
+        pointer-events: none;
+        /* Container passes clicks */
+    }
+
+    .floating-actions-bar .fab-placeholder {
+        display: none;
+        /* No placeholder on desktop */
+    }
+
+    .floating-btn {
+        pointer-events: auto;
+        /* Buttons clickable */
+    }
+
+    /* 3. Hide duplicate header logo */
+    .site-header #header .logo,
+    .site-header .logo {
+        display: none !important;
+    }
+
+    /* 4. Desktop Floating Logo - Adjusted Position & Parallax Prep */
+    .desktop-floating-logo {
+        display: block;
+        position: fixed;
+        top: -40px;
+        /* "Subir cerca de 70px" (assuming it was low, or pulling it up to bleed edges) */
+        left: 130px;
+        /* "100px para direita" (30px original + 100px) */
+        z-index: 2000;
+        width: 180px;
+        /* Slightly larger */
+        transition: transform 0.1s ease-out;
+        /* Immediate response for parallax */
+        will-change: transform;
+    }
+
+    .desktop-floating-logo img {
+        filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.5));
+    }
+
+    /* 5. Transparent Sticky Menu */
+    .site-header {
+        position: fixed;
+        width: 100%;
+        top: 0;
+        background: transparent !important;
+        /* Force Transparent */
+        backdrop-filter: none !important;
+        /* Clean glass removed for pure transparency if requested, or kept subtle */
+        border: none !important;
+        padding-top: 20px;
+    }
+
+    .header-container {
+        justify-content: center;
+    }
+
+    /* Capsule Menu - Stays */
+    .nav-menu {
+        background: rgba(10, 10, 10, 0.4);
+        /* Darker, more subtle transparent */
+        backdrop-filter: blur(15px);
+        /* Blur stays for readability */
+        border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    /* 6. Re-balance Header Layout */
+    .header-container {
+        justify-content: center;
+        /* Center the menu since logo is gone */
+        position: relative;
+    }
+
+    /* Position the CTA button absolutely to the right so it doesn't mess up centering */
+    .header-actions {
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    /* 7. Enhanced Desktop Menu (Capsule Style) */
+    .nav-menu {
+        display: flex;
+        gap: 30px;
+        padding: 10px 30px;
+        border-radius: 50px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .nav-link {
+        position: relative;
+        font-weight: 500;
+        font-size: 0.95rem;
+        letter-spacing: 0.5px;
+        color: rgba(255, 255, 255, 0.8);
+        transition: all 0.3s ease;
+        padding: 5px 0;
+    }
+
+    .nav-link::before {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 2px;
+        background: var(--primary-cyan);
+        transition: width 0.3s ease, box-shadow 0.3s ease;
+        box-shadow: 0 0 0 transparent;
+    }
+
+    .nav-link:hover {
+        color: #fff;
+        text-shadow: 0 0 10px rgba(0, 243, 255, 0.4);
+    }
+
+    .nav-link:hover::before {
+        width: 100%;
+        box-shadow: 0 0 10px var(--primary-cyan);
+    }
+
+    /* 4. Diagnóstico Button - Neon Pulse */
+    .btn-primary {
+        position: relative;
+        overflow: hidden;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .btn-primary:hover {
+        transform: scale(1.05);
+        background: rgba(0, 243, 255, 0.1);
+        box-shadow: 0 0 30px rgba(0, 243, 255, 0.4), inset 0 0 10px rgba(0, 243, 255, 0.2);
+        border-color: #fff;
+    }
+}
+
+/* MOBILE SPECIFIC */
+@media (max-width: 768px) {
+    .site-header .container {
+        display: none !important;
+    }
+
+    .site-header {
+        background: transparent !important;
+        border: none !important;
+        pointer-events: none;
+    }
+
+    .site-footer {
+        padding-bottom: 90px;
+    }
+}

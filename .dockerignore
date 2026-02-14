@@ -1,0 +1,8 @@
+.git
+.gitignore
+.agent
+node_modules
+*.md
+.env
+.DS_Store
+Thumbs.db
