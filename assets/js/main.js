@@ -197,4 +197,52 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // --- 6. Lead Capture Form Handler (n8n Integration) ---
+    const leadForm = document.getElementById('leadCaptureForm');
+    const formFeedback = document.getElementById('formFeedback');
+
+    if (leadForm) {
+        leadForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const submitBtn = leadForm.querySelector('button[type="submit"]');
+            const originalBtnText = submitBtn.textContent;
+
+            // Loading state
+            submitBtn.textContent = 'Enviando ao Hub OMD...';
+            submitBtn.disabled = true;
+
+            const formData = new FormData(leadForm);
+            const data = {
+                name: formData.get('name'),
+                email: formData.get('email'),
+                phone: formData.get('phone'),
+                message: formData.get('message'),
+                source: window.location.hostname
+            };
+
+            try {
+                // n8n Webhook URL (from our workflow)
+                const N8N_WEBHOOK_URL = 'https://n8n.olamundodigital.cloud/webhook/omd-leads';
+
+                const response = await fetch(N8N_WEBHOOK_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+
+                if (response.ok) {
+                    leadForm.style.display = 'none';
+                    formFeedback.style.display = 'block';
+                } else {
+                    throw new Error('Falha no envio');
+                }
+            } catch (err) {
+                console.error('Lead error:', err);
+                alert('Ops! Tivemos um pequeno problema. Pode tentar novamente ou nos chamar no Zap?');
+                submitBtn.textContent = originalBtnText;
+                submitBtn.disabled = false;
+            }
+        });
+    }
+
 });

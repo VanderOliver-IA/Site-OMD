@@ -142,18 +142,40 @@
 </section>
 
 <!-- CTA / Diagnostic Section -->
-<section id="diagnostic" class="section" style="padding: 8rem 0; text-align: center;">
+<section id="diagnostic" class="section" style="padding: 8rem 0; text-align: center; background: rgba(0, 243, 255, 0.02);">
     <div class="container">
-        <h2 class="section-title" style="font-size: 3.5rem; margin-bottom: 1rem;">JUNTOS?</h2>
+        <h2 class="section-title" style="font-size: 3.5rem; margin-bottom: 1rem;">O SEU <span class="text-gradient">PRÓXIMO NÍVEL</span></h2>
         <p style="font-size: 1.5rem; color: var(--text-secondary); margin-bottom: 3rem; max-width: 600px; margin-left: auto; margin-right: auto;">
-            Sua marca não nasceu para ser só mais uma. Vamos construir sua autoridade digital agora.
+            Sua marca não nasceu para ser só mais uma. Preencha abaixo e receba uma análise estratégica da nossa IA e dos nossos especialistas.
         </p>
-        <a href="https://wa.me/5521998743504?text=Quero%20um%20Diagnóstico%20Estratégico" class="btn btn-primary" style="padding: 1.5rem 3rem; font-size: 1.2rem;">
-            Agendar Diagnóstico Estratégico
-        </a>
+        
+        <div class="diagnostic-form-wrapper" style="max-width: 500px; margin: 0 auto; text-align: left;">
+            <form id="leadCaptureForm" class="card" style="padding: 2rem; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); border-radius: 20px; backdrop-filter: blur(20px);">
+                <div style="margin-bottom: 1.5rem;">
+                    <label style="display: block; margin-bottom: 0.5rem; color: var(--primary-cyan); font-weight: 600;">Como se chama?</label>
+                    <input type="text" name="name" required placeholder="Seu nome completo" style="width: 100%; padding: 1rem; background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.1); color: white; border-radius: 10px;">
+                </div>
+                <div style="margin-bottom: 1.5rem;">
+                    <label style="display: block; margin-bottom: 0.5rem; color: var(--primary-cyan); font-weight: 600;">Seu melhor e-mail</label>
+                    <input type="email" name="email" required placeholder="contato@empresa.com" style="width: 100%; padding: 1rem; background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.1); color: white; border-radius: 10px;">
+                </div>
+                <div style="margin-bottom: 1.5rem;">
+                    <label style="display: block; margin-bottom: 0.5rem; color: var(--primary-cyan); font-weight: 600;">WhatsApp (com DDD)</label>
+                    <input type="tel" name="phone" required placeholder="(00) 00000-0000" style="width: 100%; padding: 1rem; background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.1); color: white; border-radius: 10px;">
+                </div>
+                <div style="margin-bottom: 2rem;">
+                    <label style="display: block; margin-bottom: 0.5rem; color: var(--primary-cyan); font-weight: 600;">Qual seu maior desafio digital?</label>
+                    <textarea name="message" required placeholder="Ex: Não consigo vender no Instagram..." style="width: 100%; padding: 1rem; background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.1); color: white; border-radius: 10px; min-height: 100px;"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%; padding: 1.2rem; font-size: 1.1rem;">
+                    Solicitar Diagnóstico Estratégico
+                </button>
+            </form>
+            <div id="formFeedback" style="display: none; margin-top: 1.5rem; text-align: center; padding: 1.5rem; border-radius: 12px; background: rgba(0, 243, 255, 0.1); color: var(--primary-cyan); border: 1px solid var(--primary-cyan);">
+                🚀 **Pedido enviado!** Em instantes nossa IA analisará seu perfil e entraremos em contato.
+            </div>
+        </div>
     </div>
-</section>
-
 </section>
 
 <script src="assets/js/main.js"></script>
