@@ -221,21 +221,24 @@ document.addEventListener('DOMContentLoaded', () => {
             };
 
             try {
-                // n8n Webhook URL (from our workflow)
-                const N8N_WEBHOOK_URL = 'https://n8n.olamundodigital.cloud/webhook/omd-leads';
+                // n8n Webhook URL
+                const N8N_WEBHOOK_URL = 'https://n8n.olamundodigital.cloud/webhook/omd-leads?v=' + Date.now();
 
                 const response = await fetch(N8N_WEBHOOK_URL, {
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(data)
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData)
                 });
 
-                if (response.ok) {
-                    leadForm.style.display = 'none';
-                    formFeedback.style.display = 'block';
-                } else {
+                if (!response.ok) {
+                    const errorText = await response.text();
+                    console.error('Erro no n8n:', errorText);
                     throw new Error('Falha no envio');
                 }
+                leadForm.style.display = 'none';
+                formFeedback.style.display = 'block';
             } catch (err) {
                 console.error('Lead error:', err);
                 alert('Ops! Tivemos um pequeno problema. Pode tentar novamente ou nos chamar no Zap?');
