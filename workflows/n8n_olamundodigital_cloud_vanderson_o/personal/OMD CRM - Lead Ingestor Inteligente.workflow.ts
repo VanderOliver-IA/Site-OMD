@@ -108,7 +108,7 @@ export class OmdCrmLeadIngestorInteligenteWorkflow {
         type: 'n8n-nodes-base.supabase',
         version: 1,
         position: [560, 432],
-        credentials: { supabaseApi: { id: '8Uik5sQdcg77vEW1', name: 'Supabase account' } },
+        credentials: { supabaseApi: { id: 'gePjrjRBkzjpPVxa', name: 'Supabase account' } },
     })
     SaveToSupabase = {
         operation: 'create',
