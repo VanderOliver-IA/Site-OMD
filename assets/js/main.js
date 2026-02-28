@@ -222,7 +222,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             try {
                 // n8n Webhook URL (from our workflow)
-                const N8N_WEBHOOK_URL = 'https://n8n.olamundodigital.cloud/webhook/omd-leads';
+                const N8N_WEBHOOK_URL = 'https://n8n.olamundodigital.cloud/webhook-test/omd-leads';
 
                 const response = await fetch(N8N_WEBHOOK_URL, {
                     method: 'POST',
