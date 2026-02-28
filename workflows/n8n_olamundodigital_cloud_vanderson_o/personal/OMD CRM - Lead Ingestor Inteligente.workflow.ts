@@ -2,7 +2,7 @@ import { workflow, node, links } from '@n8n-as-code/transformer';
 
 // <workflow-map>
 // Workflow : OMD CRM - Lead Ingestor Inteligente
-// Nodes   : 4  |  Connections: 3
+// Nodes   : 4  |  Connections: 2
 //
 // NODE INDEX
 // ──────────────────────────────────────────────────────────────────
@@ -14,10 +14,9 @@ import { workflow, node, links } from '@n8n-as-code/transformer';
 //
 // ROUTING MAP
 // ──────────────────────────────────────────────────────────────────
-// SiteWebhook
-//    → IaAnalysis
-//      → EvolutionWhatsapp
-//      → SaveToSupabase
+// IaAnalysis
+//    → EvolutionWhatsapp
+//    → SaveToSupabase
 // </workflow-map>
 
 // =====================================================================
@@ -42,9 +41,9 @@ export class OmdCrmLeadIngestorInteligenteWorkflow {
         position: [112, 304],
     })
     SiteWebhook = {
-        httpMethod: 'POST',
         path: 'omd-leads',
-        responseMode: 'responseNode',
+        httpMethod: 'POST',
+        responseMode: 'lastNode',
         options: {},
     };
 
@@ -94,9 +93,7 @@ export class OmdCrmLeadIngestorInteligenteWorkflow {
         credentials: { supabaseApi: { id: 'gePjrjRBkzjpPVxa', name: 'Supabase account' } },
     })
     SaveToSupabase = {
-        operation: 'create',
         tableId: 'leads',
-        dataToSend: 'defineBelow',
         fieldsUi: {
             fieldValues: [
                 {
@@ -137,7 +134,6 @@ export class OmdCrmLeadIngestorInteligenteWorkflow {
 
     @links()
     defineRouting() {
-        this.SiteWebhook.out(0).to(this.IaAnalysis.in(0));
         this.IaAnalysis.out(0).to(this.EvolutionWhatsapp.in(0));
         this.IaAnalysis.out(0).to(this.SaveToSupabase.in(0));
     }
