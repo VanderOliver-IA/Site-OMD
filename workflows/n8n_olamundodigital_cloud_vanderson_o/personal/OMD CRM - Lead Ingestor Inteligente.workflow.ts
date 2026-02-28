@@ -42,8 +42,8 @@ export class OmdCrmLeadIngestorInteligenteWorkflow {
         position: [112, 304],
     })
     SiteWebhook = {
-        path: 'omd-leads',
         httpMethod: 'POST',
+        path: 'omd-leads',
         responseMode: 'responseNode',
         options: {},
     };
@@ -58,24 +58,7 @@ export class OmdCrmLeadIngestorInteligenteWorkflow {
     IaAnalysis = {
         resource: 'chat',
         operation: 'message',
-        model: 'gpt-4o',
-        messages: {
-            messageValues: [
-                {
-                    role: 'system',
-                    content:
-                        'Você é um analista de CRM da agência Olá Mundo Digital. Receba dados de um lead e retorne APENAS um JSON válido com:\n{\n  "score": <número de 0 a 100 baseado no potencial de fechamento>,\n  "summary": "<uma frase resumindo a dor/necessidade do lead>",\n  "category": "<Hot|Warm|Cold>"\n}\nCritérios de Score:\n- 80-100 (Hot): Menciona urgência, orçamento, ou problema claro de vendas\n- 50-79 (Warm): Tem interesse mas sem urgência clara\n- 0-49 (Cold): Curiosidade geral, sem dor específica',
-                },
-                {
-                    role: 'user',
-                    content:
-                        '=LEAD RECEBIDO:\nNome: {{ $json.body.name }}\nEmail: {{ $json.body.email }}\nTelefone: {{ $json.body.phone }}\nMensagem: {{ $json.body.message }}\nOrigem: {{ $json.body.source }}',
-                },
-            ],
-        },
-        options: {
-            responseFormat: 'json_object',
-        },
+        requestOptions: {},
     };
 
     @node({
@@ -117,31 +100,31 @@ export class OmdCrmLeadIngestorInteligenteWorkflow {
         fieldsUi: {
             fieldValues: [
                 {
-                    fieldName: 'full_name',
+                    fieldId: 'full_name',
                     fieldValue: '={{ $node["Site Webhook"].json.body.name }}',
                 },
                 {
-                    fieldName: 'email',
+                    fieldId: 'email',
                     fieldValue: '={{ $node["Site Webhook"].json.body.email }}',
                 },
                 {
-                    fieldName: 'phone',
+                    fieldId: 'phone',
                     fieldValue: '={{ $node["Site Webhook"].json.body.phone }}',
                 },
                 {
-                    fieldName: 'message_raw',
+                    fieldId: 'message_raw',
                     fieldValue: '={{ $node["Site Webhook"].json.body.message }}',
                 },
                 {
-                    fieldName: 'source',
+                    fieldId: 'source',
                     fieldValue: '={{ $node["Site Webhook"].json.body.source || "site_omd" }}',
                 },
                 {
-                    fieldName: 'ia_score',
+                    fieldId: 'ia_score',
                     fieldValue: '={{ JSON.parse($node["IA Analysis"].json.choices[0].message.content).score }}',
                 },
                 {
-                    fieldName: 'ia_summary',
+                    fieldId: 'ia_summary',
                     fieldValue: '={{ JSON.parse($node["IA Analysis"].json.choices[0].message.content).summary }}',
                 },
             ],

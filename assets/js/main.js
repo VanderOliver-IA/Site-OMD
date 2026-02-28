@@ -229,7 +229,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     headers: {
                         'Content-Type': 'application/json',
                     },
-                    body: JSON.stringify(formData)
+                    body: JSON.stringify(data)
                 });
 
                 if (!response.ok) {
@@ -237,8 +237,14 @@ document.addEventListener('DOMContentLoaded', () => {
                     console.error('Erro no n8n:', errorText);
                     throw new Error('Falha no envio');
                 }
-                leadForm.style.display = 'none';
-                formFeedback.style.display = 'block';
+
+                // Show success feedback
+                leadForm.classList.add('fade-out');
+                setTimeout(() => {
+                    leadForm.style.display = 'none';
+                    formFeedback.style.display = 'block';
+                    formFeedback.classList.add('fade-in');
+                }, 300);
             } catch (err) {
                 console.error('Lead error:', err);
                 alert('Ops! Tivemos um pequeno problema. Pode tentar novamente ou nos chamar no Zap?');
