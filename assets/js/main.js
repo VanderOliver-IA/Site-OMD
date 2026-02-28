@@ -221,11 +221,11 @@ document.addEventListener('DOMContentLoaded', () => {
             };
 
             try {
-                // n8n Webhook URL
-                const N8N_WEBHOOK_URL = 'https://n8n.olamundodigital.cloud/webhook/omd-leads?v=' + Date.now();
+                const N8N_WEBHOOK_URL = 'https://n8n.olamundodigital.cloud/webhook/omd-leads';
 
                 const response = await fetch(N8N_WEBHOOK_URL, {
                     method: 'POST',
+                    cache: 'no-cache',
                     headers: {
                         'Content-Type': 'application/json',
                     },
